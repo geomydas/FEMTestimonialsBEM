@@ -1,0 +1,162 @@
+@import "../node_modules/mixed-reset/mixed-reset.css";
+
+:root {
+  --font-barlowSemiCondensed: "Barlow Semi Condensed", sans-serif;
+  --color-violet: hsl(263, 55%, 52%);
+  --color-grayishBlue: hsl(217, 19%, 35%);
+  --color-blackishBlue: hsl(219, 29%, 14%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-gray: hsl(0, 0%, 81%);
+  --color-lightGray: hsl(210, 46%, 95%);
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+  --text-9xl: 8rem;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-none: 0 0 #0000;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-lightGray);
+  padding: 4rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: var(--font-barlowSemiCondensed);
+}
+
+.sr-only {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border-width: 0;
+  white-space: nowrap;
+}
+
+.testimonial__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 80rem;
+
+  @media (min-width: 64rem) {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+    grid-template-areas:
+      "item1 item1 item2 item4"
+      "item3 item5 item5 item4";
+  }
+}
+
+.testimonial__card {
+  display: flex;
+  grid-area: var(--__testimonial__card-gridArea);
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-2xl);
+  border-radius: 8px;
+  background: var(--__testimonial__card-background);
+  padding: 2rem;
+
+  --__testimonial__lead-color: var(--__testimonial__name-color);
+  --__testimonial__status-color: hsl(
+    from var(--__testimonial__name-color) h s l / 0.5
+  );
+  --__testimonial__body-color: hsl(
+    from var(--__testimonial__name-color) h s l / 0.7
+  );
+
+  &:nth-of-type(1) {
+    --__testimonial__card-gridArea: item1;
+    --__testimonial__card-background: var(--color-violet);
+    --__testimonial__name-color: var(--color-white);
+    position: relative;
+    isolation: isolate;
+
+    &::after {
+      position: absolute;
+      z-index: -1;
+      inset: 2rem 2rem auto auto;
+      content: url(../images/bg-pattern-quotation.svg);
+    }
+  }
+
+  &:nth-of-type(2) {
+    --__testimonial__card-gridArea: item2;
+    --__testimonial__card-background: var(--color-grayishBlue);
+    --__testimonial__name-color: var(--color-white);
+  }
+
+  &:nth-of-type(3) {
+    --__testimonial__card-gridArea: item3;
+    --__testimonial__card-background: var(--color-white);
+    --__testimonial__name-color: var(--color-grayishBlue);
+  }
+
+  &:nth-of-type(4) {
+    --__testimonial__card-gridArea: item4;
+    --__testimonial__card-background: var(--color-blackishBlue);
+    --__testimonial__name-color: var(--color-white);
+  }
+
+  &:nth-of-type(5) {
+    --__testimonial__card-gridArea: item5;
+    --__testimonial__card-background: var(--color-white);
+    --__testimonial__name-color: var(--color-grayishBlue);
+  }
+}
+
+.testimonial__header {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 48px auto;
+  align-items: center;
+  gap: 0.25rem 1rem;
+}
+
+.testimonial__img {
+  grid-row: span 2;
+  border-radius: 9999px;
+}
+
+.testimonial__name {
+  color: var(--__testimonial__name-color);
+}
+
+.testimonial__status {
+  color: var(--__testimonial__status-color);
+}
+
+.testimonial__lead {
+  color: var(--__testimonial__lead-color);
+  font-weight: 600;
+  font-size: var(--text-2xl);
+}
+
+.testimonial__body {
+  color: var(--__testimonial__body-color);
+}
