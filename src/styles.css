@@ -133,7 +133,7 @@ body {
 .testimonial__header {
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: 48px auto;
+  grid-template-columns: 3rem auto;
   align-items: center;
   gap: 0.25rem 1rem;
 }
